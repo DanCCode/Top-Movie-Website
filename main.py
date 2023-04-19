@@ -128,19 +128,6 @@ def add_movie():
 
     return render_template("add.html", form=form)
 
-# @app.route("/entry/<int:id>/<string:title>/<int:year>")
-# def entry(id,year,title):
-#
-#     parameters_movie = {
-#         "api_key": API_KEY,
-#     }
-#
-#     MOVIE_ID =
-#
-#     response_2 = requests.get(url=f"{API_MOVIE_SEARCH_ENDPOINT}/{MOVIE_ID}", params=parameters_movie)
-#     response_2.raise_for_status()
-#     movie_data_final = response_2.json()
-
 
 @app.route("/entry/<int:id>", methods=["GET", "POST"])
 def add_to_database(id):
@@ -180,6 +167,7 @@ def add_to_database(id):
     db.session.commit()
     return redirect(url_for('edit', index=new_movie.id))
 
+#Test Database
 def add():
     new_movie = Movie(
         title="Phone Booth",
@@ -207,4 +195,3 @@ if __name__ == '__main__':
     app.run(debug=True)
     with app.app_context():
         db.create_all()
-        add()
